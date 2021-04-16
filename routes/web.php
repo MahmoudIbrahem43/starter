@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\StudentController;
+use \App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,9 +24,11 @@ Route::get('/', function () {
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-Route::get('/',function (){
-    return 'home';
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/',[App\Http\Controllers\Auth\LoginController::class, 'logOut'])->name('');
+
+Route::resource('students', StudentController::class);
+
+Route::resource('courses', CourseController::class);
+
 

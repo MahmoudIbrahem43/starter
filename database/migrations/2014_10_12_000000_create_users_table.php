@@ -34,3 +34,10 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+
+
+
+
+
+
+// php artisan migrate --path=/database/migrations/Students.php
